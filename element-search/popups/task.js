@@ -26,6 +26,8 @@ if (modal.className == "modal modal_active") {
     redButton[0].onclick = function () {
         console.log(result);
         modalSuccess.className = "modal modal_active";
+        modal.className = "modal";
+
     };
 }
 
