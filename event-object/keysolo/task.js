@@ -16,6 +16,8 @@ class Game {
     this.lossElement.textContent = 0;
   }
 
+
+
   registerEvents() {
     /*
       TODO:
@@ -24,6 +26,22 @@ class Game {
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
+
+    // При сравнении регистр не должен быть важен (а или А)
+    // Обратите внимание на то, что именно записывается в this.currentSymbol. 
+    // Вспомните в чем различия между keydown и keyup
+
+    function updatePlayer(event) {
+      console.log(this);
+      console.log(event.key, event.code);
+      if (this.currentSymbol.textContent == event.key) {
+        this.success();
+      } else {
+        this.fail();
+      }
+    }
+    document.addEventListener('keyup', updatePlayer.bind(this));
+
   }
 
   success() {
@@ -56,18 +74,18 @@ class Game {
 
   getWord() {
     const words = [
-        'bob',
-        'awesome',
-        'netology',
-        'hello',
-        'kitty',
-        'rock',
-        'youtube',
-        'popcorn',
-        'cinema',
-        'love',
-        'javascript'
-      ],
+      'bob',
+      'awesome',
+      'netology',
+      'hello',
+      'kitty',
+      'rock',
+      'youtube',
+      'popcorn',
+      'cinema',
+      'love',
+      'javascript'
+    ],
       index = Math.floor(Math.random() * words.length);
 
     return words[index];
@@ -77,7 +95,7 @@ class Game {
     const html = [...word]
       .map(
         (s, i) =>
-          `<span class="symbol ${i === 0 ? 'symbol_current': ''}">${s}</span>`
+          `<span class="symbol ${i === 0 ? 'symbol_current' : ''}">${s}</span>`
       )
       .join('');
     this.wordElement.innerHTML = html;
@@ -86,5 +104,5 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
+new Game(document.getElementById('game'));
 
