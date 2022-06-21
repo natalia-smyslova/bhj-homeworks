@@ -16,7 +16,7 @@ setInterval(() => {
     let nextElement = rotatorActive.nextElementSibling;
     rotatorActive.classList.toggle("rotator__case_active");
     if (nextElement == null) {
-        document.querySelector("span.rotator__case:first-child").classList.toggle("rotator__case_active");
+        rotator[0].classList.toggle("rotator__case_active");
     }
     else {
         nextElement.classList.toggle("rotator__case_active");
