@@ -13,27 +13,19 @@
 // Обратите внимание, что при прокрутке возвращаемые координаты getBoundingClientRect() меняются
 
 const reveal = document.querySelectorAll("div.reveal");
-console.log(reveal);
-let arrReveal = Array.from(reveal);
-console.log(arrReveal);
-console.log(arrReveal[0].className);
 
-function isVisible(arrReveal) {
-    for (let i = 0; i < arrReveal.length; i++) {
-        setInterval(() => {
-            let viewportHeight = window.innerHeight;
-            let { top, bottom } = reveal[i].getBoundingClientRect();
-            console.log(top,bottom);
-            if ((top < viewportHeight) == true) {
-                arrReveal[i].className = "reveal reveal_active";
-            }
-
-            if ((bottom < 0) == true) {
-                arrReveal[i].className = "reveal";
-            }
-
-        }, 1000);
+window.onscroll = function(){  
+    for (let i = 0; i < reveal.length; i++) {
+    let viewportHeight = window.innerHeight;
+    console.log(viewportHeight);
+    let { top, bottom } = reveal[i].getBoundingClientRect();
+    console.log(top,bottom);
+    if ((top < viewportHeight) == true) {
+        reveal[i].classList.add("reveal_active");
     }
-};
 
-window.addEventListener("scroll", isVisible(arrReveal));
+    if ((bottom < 0) == true) {
+        reveal[i].classList.remove("reveal_active");
+    }
+}
+};
