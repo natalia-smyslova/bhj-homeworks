@@ -3,9 +3,9 @@
 // Поставить этому элементу класс font-size_active
 // В зависимости от размера, поставить элементу с классом book соответствующий класс
 
-let fontSize = document.querySelectorAll("a.font-size");
+const fontSize = document.querySelectorAll("a.font-size");
 
-let book = document.getElementById("book");
+const book = document.getElementById("book");
 
 fontSize.forEach(function (item) {
 
